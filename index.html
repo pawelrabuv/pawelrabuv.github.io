@@ -1,0 +1,959 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>78拨箩卜视频 - 原创视频内容|萝卜生活影像社区</title>
+<meta name="description" content="78拨箩卜视频是一个聚焦生活影像与原创短片的视频品牌官网，汇聚创意影像创作者，分享真实有趣的生活记录与社区故事。">
+<style>
+  :root{
+    --carrot:#f26d21;
+    --carrot-deep:#d4550f;
+    --carrot-soft:#ffb37a;
+    --leaf:#3f7d3a;
+    --leaf-dark:#2c5a29;
+    --ink:#1f1a16;
+    --ink-soft:#4a4038;
+    --paper:#fdf8f1;
+    --paper-2:#fff3e6;
+    --line:#ecdcc9;
+    --shadow:0 18px 40px -22px rgba(94,55,18,.45);
+    --radius:18px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  img,svg{display:block;max-width:100%}
+  ul{list-style:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--carrot-deep);font-weight:600;
+  }
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--carrot);display:inline-block}
+
+  /* ============ Header ============ */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:rgba(253,248,241,.88);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    height:74px;gap:24px;
+  }
+  .brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:19px;letter-spacing:.02em}
+  .brand .mark{
+    width:42px;height:42px;border-radius:14px;
+    background:linear-gradient(140deg,var(--carrot),var(--carrot-deep));
+    display:grid;place-items:center;box-shadow:0 8px 18px -8px rgba(242,109,33,.9);
+  }
+  .brand .mark svg{width:24px;height:24px}
+  .brand small{display:block;font-size:11px;font-weight:500;color:var(--ink-soft);letter-spacing:.18em}
+  nav.links{display:flex;gap:30px;font-size:15px;color:var(--ink-soft);font-weight:500}
+  nav.links a{position:relative;padding:6px 0;transition:color .25s}
+  nav.links a::after{
+    content:"";position:absolute;left:0;bottom:0;height:2px;width:0;
+    background:var(--carrot);transition:width .3s;border-radius:2px;
+  }
+  nav.links a:hover{color:var(--carrot-deep)}
+  nav.links a:hover::after{width:100%}
+  .nav-cta{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--ink);color:#fff;font-weight:600;font-size:14px;
+    padding:11px 20px;border-radius:999px;transition:.3s;
+  }
+  .nav-cta:hover{background:var(--carrot-deep);transform:translateY(-2px)}
+  .burger{display:none;background:none;border:0;cursor:pointer;padding:8px}
+  .burger span{display:block;width:24px;height:2px;background:var(--ink);margin:5px 0;border-radius:2px}
+
+  /* ============ Hero ============ */
+  .hero{
+    position:relative;overflow:hidden;
+    padding:78px 0 90px;
+    background:
+      radial-gradient(circle at 88% 8%, rgba(255,179,122,.45), transparent 46%),
+      radial-gradient(circle at 6% 92%, rgba(63,125,58,.14), transparent 44%),
+      var(--paper);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center}
+  .hero h1{
+    font-size:clamp(40px,5.4vw,68px);
+    line-height:1.1;letter-spacing:-.01em;font-weight:900;
+    margin:18px 0 22px;
+  }
+  .hero h1 em{
+    font-style:normal;color:var(--carrot-deep);
+    background:linear-gradient(180deg,transparent 62%,rgba(255,179,122,.55) 62%);
+  }
+  .hero p.lead{font-size:17px;color:var(--ink-soft);max-width:520px;margin-bottom:32px}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:38px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:14px 28px;border-radius:999px;font-weight:700;font-size:15px;
+    transition:.3s;border:2px solid transparent;cursor:pointer;
+  }
+  .btn-primary{background:var(--carrot);color:#fff;box-shadow:0 16px 30px -16px rgba(242,109,33,.95)}
+  .btn-primary:hover{background:var(--carrot-deep);transform:translateY(-3px)}
+  .btn-ghost{border-color:var(--ink);color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:#fff;transform:translateY(-3px)}
+  .hero-stats{display:flex;gap:38px;flex-wrap:wrap}
+  .hero-stats div strong{display:block;font-size:26px;font-weight:800;letter-spacing:-.02em}
+  .hero-stats div span{font-size:13px;color:var(--ink-soft);letter-spacing:.06em}
+
+  /* Hero visual: stacked video cards */
+  .stage{position:relative;height:480px}
+  .vcard{
+    position:absolute;border-radius:22px;overflow:hidden;
+    box-shadow:var(--shadow);border:5px solid #fff;background:#fff;
+    transition:transform .5s cubic-bezier(.2,.8,.2,1);
+  }
+  .vcard .thumb{position:relative;height:100%;display:grid;place-items:center}
+  .vcard .thumb svg{width:100%;height:100%}
+  .vcard .play{
+    position:absolute;width:56px;height:56px;border-radius:50%;
+    background:rgba(255,255,255,.92);display:grid;place-items:center;
+    box-shadow:0 10px 22px -10px rgba(0,0,0,.5);
+  }
+  .vcard .play svg{width:20px;height:20px}
+  .vcard .cap{
+    position:absolute;left:0;right:0;bottom:0;padding:14px 16px 12px;
+    background:linear-gradient(transparent,rgba(20,12,6,.78));
+    color:#fff;font-size:13px;font-weight:600;letter-spacing:.02em;
+  }
+  .vcard .cap small{display:block;font-weight:400;opacity:.78;font-size:11px}
+  .v1{width:62%;height:64%;left:0;top:0;transform:rotate(-4deg);z-index:3}
+  .v2{width:54%;height:56%;right:0;top:22%;transform:rotate(5deg);z-index:4}
+  .v3{width:48%;height:44%;left:16%;bottom:0;transform:rotate(-2deg);z-index:5}
+  .stage:hover .v1{transform:rotate(-6deg) translateY(-8px)}
+  .stage:hover .v2{transform:rotate(7deg) translateY(6px)}
+  .stage:hover .v3{transform:rotate(0deg) translateY(-6px)}
+  .badge-float{
+    position:absolute;right:6%;top:2%;z-index:6;
+    background:var(--leaf);color:#fff;border-radius:14px;
+    padding:10px 16px;font-size:12px;font-weight:700;letter-spacing:.08em;
+    box-shadow:0 14px 26px -14px rgba(63,125,58,.9);
+    transform:rotate(6deg);
+  }
+
+  /* ============ Marquee ============ */
+  .ticker{
+    background:var(--ink);color:var(--paper-2);
+    padding:16px 0;overflow:hidden;white-space:nowrap;
+  }
+  .ticker-track{display:inline-flex;gap:44px;animation:slide 26s linear infinite;font-size:14px;letter-spacing:.14em}
+  .ticker-track span{display:inline-flex;align-items:center;gap:44px}
+  .ticker-track span::after{content:"✦";color:var(--carrot-soft)}
+  @keyframes slide{to{transform:translateX(-50%)}}
+
+  /* ============ Section base ============ */
+  section{padding:92px 0}
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:46px;flex-wrap:wrap}
+  .sec-head h2{font-size:clamp(28px,3.4vw,40px);line-height:1.2;letter-spacing:-.01em;font-weight:800}
+  .sec-head p{color:var(--ink-soft);max-width:460px;font-size:15.5px;margin-top:10px}
+
+  /* ============ What we do ============ */
+  .pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .pillar{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:30px 26px;transition:.35s;position:relative;overflow:hidden;
+  }
+  .pillar::after{
+    content:"";position:absolute;inset:auto -30% -60% auto;width:130px;height:130px;
+    border-radius:50%;background:var(--paper-2);transition:.4s;
+  }
+  .pillar:hover{transform:translateY(-8px);border-color:var(--carrot-soft);box-shadow:var(--shadow)}
+  .pillar:hover::after{transform:scale(1.35);background:#ffe7d2}
+  .pillar .ico{position:relative;z-index:1;width:48px;height:48px;border-radius:14px;background:var(--paper-2);display:grid;place-items:center;margin-bottom:20px}
+  .pillar .ico svg{width:26px;height:26px;stroke:var(--carrot-deep)}
+  .pillar h3{position:relative;z-index:1;font-size:18px;margin-bottom:10px;letter-spacing:.01em}
+  .pillar p{position:relative;z-index:1;font-size:14px;color:var(--ink-soft)}
+
+  /* ============ Videos grid ============ */
+  .videos{background:linear-gradient(180deg,#fffdf9,var(--paper))}
+  .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .video{
+    background:#fff;border-radius:var(--radius);overflow:hidden;
+    border:1px solid var(--line);transition:.35s;display:flex;flex-direction:column;
+  }
+  .video:hover{transform:translateY(-8px);box-shadow:var(--shadow);border-color:var(--carrot-soft)}
+  .video .top{position:relative;aspect-ratio:16/10;overflow:hidden}
+  .video .top svg{width:100%;height:100%;transition:transform .6s}
+  .video:hover .top svg{transform:scale(1.06)}
+  .video .dur{
+    position:absolute;right:12px;bottom:12px;background:rgba(20,12,6,.72);color:#fff;
+    font-size:11px;padding:3px 9px;border-radius:6px;letter-spacing:.06em;
+  }
+  .video .play-mini{
+    position:absolute;inset:0;display:grid;place-items:center;opacity:0;transition:.35s;
+  }
+  .video .play-mini i{
+    width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,.94);
+    display:grid;place-items:center;box-shadow:0 10px 22px -10px rgba(0,0,0,.55);
+  }
+  .video .play-mini svg{width:18px;height:18px}
+  .video:hover .play-mini{opacity:1}
+  .video .body{padding:20px 20px 22px;flex:1;display:flex;flex-direction:column;gap:10px}
+  .video .tag{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--carrot-deep);font-weight:700}
+  .video h3{font-size:17px;line-height:1.45;letter-spacing:.01em}
+  .video .meta{font-size:12.5px;color:#8d8178;display:flex;gap:14px;margin-top:auto;padding-top:8px}
+
+  /* ============ Story / Feature ============ */
+  .feature{background:var(--ink);color:var(--paper);position:relative;overflow:hidden}
+  .feature::before{
+    content:"";position:absolute;width:560px;height:560px;border-radius:50%;
+    background:radial-gradient(circle,rgba(242,109,33,.28),transparent 68%);
+    right:-160px;top:-180px;
+  }
+  .feature .wrap{position:relative;z-index:1}
+  .feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  .feature h2{font-size:clamp(28px,3.6vw,42px);line-height:1.2;margin:16px 0 22px;font-weight:800;letter-spacing:-.01em}
+  .feature h2 em{font-style:normal;color:var(--carrot-soft)}
+  .feature p{color:#cbc0b6;font-size:15.5px;margin-bottom:18px}
+  .feature .quote{
+    border-left:3px solid var(--carrot);padding-left:20px;margin-top:28px;
+    font-size:16px;color:var(--paper-2);
+  }
+  .feature .quote cite{display:block;font-style:normal;font-size:13px;color:#9d9084;margin-top:10px;letter-spacing:.06em}
+  .figures{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .figure{
+    background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.1);
+    border-radius:18px;padding:26px 24px;transition:.35s;
+  }
+  .figure:hover{background:rgba(242,109,33,.13);border-color:rgba(242,109,33,.4);transform:translateY(-6px)}
+  .figure strong{display:block;font-size:33px;font-weight:800;letter-spacing:-.02em;color:var(--carrot-soft)}
+  .figure span{font-size:13.5px;color:#bdb1a6}
+
+  /* ============ Creators ============ */
+  .creators{background:var(--paper-2)}
+  .cgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .creator{
+    background:#fff;border-radius:var(--radius);padding:28px 24px;text-align:center;
+    border:1px solid var(--line);transition:.35s;
+  }
+  .creator:hover{transform:translateY(-8px);box-shadow:var(--shadow);border-color:var(--carrot-soft)}
+  .avatar{width:78px;height:78px;border-radius:50%;margin:0 auto 18px;overflow:hidden;border:3px solid var(--paper-2)}
+  .creator h3{font-size:16.5px;margin-bottom:4px}
+  .creator .role{font-size:12.5px;color:var(--carrot-deep);letter-spacing:.08em;font-weight:600;margin-bottom:12px}
+  .creator p{font-size:13.5px;color:var(--ink-soft)}
+
+  /* ============ Process ============ */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;counter-reset:step}
+  .step{position:relative;padding:28px 24px 26px;background:#fff;border-radius:var(--radius);border:1px solid var(--line)}
+  .step::before{
+    counter-increment:step;content:"0" counter(step);
+    font-size:13px;font-weight:800;letter-spacing:.14em;color:var(--carrot);
+    display:block;margin-bottom:14px;
+  }
+  .step h3{font-size:17px;margin-bottom:10px}
+  .step p{font-size:13.8px;color:var(--ink-soft)}
+
+  /* ============ Topics ============ */
+  .topics{background:#fffdf9}
+  .topic-list{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .topic{
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    padding:18px 22px;background:#fff;border:1px solid var(--line);border-radius:14px;
+    transition:.3s;
+  }
+  .topic:hover{border-color:var(--carrot);transform:translateX(4px);background:var(--paper-2)}
+  .topic strong{font-size:15.5px;display:block}
+  .topic span{font-size:12px;color:#8d8178;letter-spacing:.06em}
+  .topic .arw{color:var(--carrot-deep);font-weight:700;transition:.3s}
+  .topic:hover .arw{transform:translateX(4px)}
+
+  /* ============ Newsletter ============ */
+  .subscribe{
+    background:linear-gradient(135deg,var(--carrot),var(--carrot-deep));
+    color:#fff;border-radius:26px;padding:60px 54px;
+    display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center;
+    box-shadow:0 30px 60px -34px rgba(212,85,15,.9);
+  }
+  .subscribe h2{font-size:clamp(26px,3.2vw,36px);line-height:1.25;margin-bottom:14px;letter-spacing:-.01em}
+  .subscribe p{color:#ffe3d0;font-size:15px;max-width:440px}
+  .sub-form{display:flex;gap:10px;background:rgba(255,255,255,.15);padding:8px;border-radius:999px;backdrop-filter:blur(6px)}
+  .sub-form input{
+    flex:1;border:0;background:transparent;padding:12px 20px;color:#fff;font-size:14.5px;outline:none;
+    min-width:0;
+  }
+  .sub-form input::placeholder{color:rgba(255,255,255,.72)}
+  .sub-form button{
+    border:0;background:#fff;color:var(--carrot-deep);font-weight:700;font-size:14.5px;
+    padding:12px 26px;border-radius:999px;cursor:pointer;transition:.3s;white-space:nowrap;
+  }
+  .sub-form button:hover{background:var(--ink);color:#fff}
+  .sub-note{font-size:12.5px;color:#ffe3d0;margin-top:14px;letter-spacing:.02em}
+
+  /* ============ FAQ ============ */
+  .faq-list{max-width:880px;margin:0 auto;border-top:1px solid var(--line)}
+  details{border-bottom:1px solid var(--line);padding:6px 0}
+  summary{
+    list-style:none;cursor:pointer;padding:22px 44px 22px 0;position:relative;
+    font-size:16.5px;font-weight:700;letter-spacing:.01em;
+  }
+  summary::-webkit-details-marker{display:none}
+  summary::after{
+    content:"+";position:absolute;right:6px;top:50%;transform:translateY(-50%);
+    font-size:22px;font-weight:400;color:var(--carrot-deep);transition:.3s;
+  }
+  details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+  details .ans{padding:0 44px 24px 0;color:var(--ink-soft);font-size:14.8px}
+
+  /* ============ Footer ============ */
+  footer.site{background:var(--ink);color:#bdb1a6;padding:70px 0 34px}
+  .f-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.1)}
+  .f-brand{display:flex;align-items:center;gap:12px;color:#fff;font-weight:800;font-size:18px;margin-bottom:18px}
+  .f-brand .mark{width:40px;height:40px;border-radius:13px;background:linear-gradient(140deg,var(--carrot),var(--carrot-deep));display:grid;place-items:center}
+  .f-brand .mark svg{width:22px;height:22px}
+  .f-desc{font-size:14px;max-width:320px;line-height:1.8}
+  .f-col h4{color:#fff;font-size:14px;letter-spacing:.1em;margin-bottom:18px}
+  .f-col a{display:block;font-size:14px;margin-bottom:11px;transition:.25s}
+  .f-col a:hover{color:var(--carrot-soft)}
+  .f-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:28px;font-size:13px}
+  .f-social{display:flex;gap:14px}
+  .f-social a{
+    width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);
+    display:grid;place-items:center;transition:.3s;
+  }
+  .f-social a:hover{background:var(--carrot);transform:translateY(-3px)}
+  .f-social svg{width:16px;height:16px;fill:#fff}
+
+  /* ============ Responsive ============ */
+  @media (max-width:980px){
+    .hero-grid,.feature-grid,.subscribe{grid-template-columns:1fr}
+    .stage{height:400px;margin-top:20px}
+    .pillars,.steps,.cgrid{grid-template-columns:repeat(2,1fr)}
+    .vgrid,.topic-list{grid-template-columns:repeat(2,1fr)}
+    .f-top{grid-template-columns:1fr 1fr}
+    .subscribe{padding:44px 32px}
+  }
+  @media (max-width:680px){
+    nav.links,.nav-cta{display:none}
+    .burger{display:block}
+    section{padding:64px 0}
+    .hero{padding:50px 0 64px}
+    .pillars,.steps,.cgrid,.vgrid,.topic-list,.figures{grid-template-columns:1fr}
+    .stage{height:330px}
+    .f-top{grid-template-columns:1fr}
+    .sub-form{flex-direction:column;border-radius:18px}
+    .sub-form button{width:100%}
+    .mobile-menu{display:flex}
+  }
+  .mobile-menu{
+    display:none;flex-direction:column;gap:4px;
+    background:var(--paper);border-bottom:1px solid var(--line);padding:12px 24px 20px;
+  }
+  .mobile-menu a{padding:11px 4px;font-size:15px;border-bottom:1px solid var(--line)}
+  .mobile-menu a:last-child{border-bottom:0}
+  .mobile-menu.open{display:flex}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a href="#top" class="brand">
+      <span class="mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2.5" y="5" width="14" height="14" rx="3"/>
+          <path d="M16.5 10.5 21.5 7.5v9l-5-3z" fill="#fff" stroke="none"/>
+        </svg>
+      </span>
+      <span>78拨箩卜视频<small>LUOBO VIDEO</small></span>
+    </a>
+    <nav class="links">
+      <a href="#about">关于我们</a>
+      <a href="#videos">精选视频</a>
+      <a href="#creators">创作者</a>
+      <a href="#process">合作流程</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+    <a href="#subscribe" class="nav-cta">加入社区</a>
+    <button class="burger" aria-label="菜单" onclick="document.getElementById('mmenu').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mmenu">
+    <a href="#about">关于我们</a>
+    <a href="#videos">精选视频</a>
+    <a href="#creators">创作者</a>
+    <a href="#process">合作流程</a>
+    <a href="#faq">常见问题</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">生活影像 · 原创短片 · 社区共创</span>
+        <h1>78拨箩卜视频</h1>
+        <p class="lead">把日常里那些不起眼的片段，剪成有温度的故事。78拨箩卜视频是一群热爱记录的创作者聚集的地方——我们拍街头、拍厨房、拍旅途，也拍每一个认真生活的普通人。</p>
+        <div class="hero-actions">
+          <a href="#videos" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            观看精选作品
+          </a>
+          <a href="#subscribe" class="btn btn-ghost">成为创作者</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>1,280+</strong><span>原创视频作品</span></div>
+          <div><strong>76万</strong><span>社区观众</span></div>
+          <div><strong>24</strong><span>城市影像站</span></div>
+        </div>
+      </div>
+
+      <div class="stage" aria-hidden="true">
+        <div class="badge-float">本周首映 · 第 78 拨</div>
+
+        <div class="vcard v1">
+          <div class="thumb">
+            <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#ffb37a"/><stop offset="1" stop-color="#f26d21"/>
+                </linearGradient>
+              </defs>
+              <rect width="400" height="300" fill="url(#g1)"/>
+              <circle cx="300" cy="80" r="52" fill="#fff" opacity=".28"/>
+              <path d="M0 240 Q90 190 190 228 T400 208 V300 H0Z" fill="#fff" opacity=".22"/>
+              <rect x="46" y="150" width="90" height="90" rx="10" fill="#fff" opacity=".3"/>
+            </svg>
+            <span class="play">
+              <svg viewBox="0 0 24 24" fill="#1f1a16"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+            <div class="cap">巷口的三分钟<small>城市观察 · 04:12</small></div>
+          </div>
+        </div>
+
+        <div class="vcard v2">
+          <div class="thumb">
+            <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="g2" x1="0" y1="1" x2="1" y2="0">
+                  <stop offset="0" stop-color="#3f7d3a"/><stop offset="1" stop-color="#8fc46a"/>
+                </linearGradient>
+              </defs>
+              <rect width="400" height="300" fill="url(#g2)"/>
+              <circle cx="120" cy="110" r="70" fill="#fff" opacity=".22"/>
+              <path d="M0 220 Q120 260 220 220 T400 250 V300 H0Z" fill="#fff" opacity=".2"/>
+              <circle cx="310" cy="200" r="34" fill="#fff" opacity=".26"/>
+            </svg>
+            <span class="play">
+              <svg viewBox="0 0 24 24" fill="#1f1a16"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+            <div class="cap">菜市场清晨<small>生活记录 · 06:38</small></div>
+          </div>
+        </div>
+
+        <div class="vcard v3">
+          <div class="thumb">
+            <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#f7d9a8"/><stop offset="1" stop-color="#e9a13b"/>
+                </linearGradient>
+              </defs>
+              <rect width="400" height="300" fill="url(#g3)"/>
+              <rect x="40" y="60" width="120" height="180" rx="16" fill="#fff" opacity=".28"/>
+              <circle cx="290" cy="120" r="46" fill="#fff" opacity=".3"/>
+              <path d="M0 250 Q100 210 200 244 T400 226 V300 H0Z" fill="#fff" opacity=".24"/>
+            </svg>
+            <span class="play">
+              <svg viewBox="0 0 24 24" fill="#1f1a16"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+            <div class="cap">慢慢做饭的人<small>人物短片 · 09:05</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TICKER ================= -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>纪录片式生活影像</span><span>城市街头观察</span><span>美食与厨房</span><span>旅行手记</span><span>人物采访</span><span>创作者扶持计划</span><span>社区放映会</span><span>幕后制作笔记</span>
+      <span>纪录片式生活影像</span><span>城市街头观察</span><span>美食与厨房</span><span>旅行手记</span><span>人物采访</span><span>创作者扶持计划</span><span>社区放映会</span><span>幕后制作笔记</span>
+    </div>
+  </div>
+
+  <!-- ================= ABOUT / PILLARS ================= -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow">我们在做什么</span>
+          <h2>不只是看视频，<br>更是一起把生活拍下来</h2>
+        </div>
+        <p>78拨箩卜视频相信，好的影像来自真实。我们围绕「拍摄—剪辑—分享—放映」建立了一套完整的社区内容机制，让每个愿意举起镜头的人都能被看见。</p>
+      </div>
+
+      <div class="pillars">
+        <article class="pillar">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2.5" y="6" width="13" height="12" rx="3"/>
+              <path d="M15.5 11 21.5 8v8l-6-3z"/>
+            </svg>
+          </div>
+          <h3>原创短片制作</h3>
+          <p>从三分钟的城市速写到二十分钟的人物纪录，我们坚持真实叙事与克制的镜头语言。</p>
+        </article>
+        <article class="pillar">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M12 7v5l3.5 2"/>
+            </svg>
+          </div>
+          <h3>每周更新栏目</h3>
+          <p>固定的栏目节奏让内容有迹可循：周中生活记录，周末人物长片，月末社区放映。</p>
+        </article>
+        <article class="pillar">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <h3>创作者社区</h3>
+          <p>超过两百位签约与孵化创作者在这里交流器材、脚本、调色与发行经验。</p>
+        </article>
+        <article class="pillar">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2 15 9l7 .6-5.3 4.6L18.3 21 12 17.3 5.7 21l1.6-6.8L2 9.6 9 9z"/>
+            </svg>
+          </div>
+          <h3>线下放映活动</h3>
+          <p>在二十四个城市影像站，我们把作品搬上幕布，让创作者与观众面对面聊一聊。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= VIDEOS ================= -->
+  <section id="videos" class="videos">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow">精选作品</span>
+          <h2>这一拨，值得坐下来慢慢看</h2>
+        </div>
+        <p>每月我们从上千条投稿中挑选出兼具叙事与画面的作品，组成当期主题片单，也欢迎你投递自己的故事。</p>
+      </div>
+
+      <div class="vgrid">
+        <article class="video">
+          <div class="top">
+            <svg viewBox="0 0 480 300" preserveAspectRatio="xMidYMid slice">
+              <defs><linearGradient id="vg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffcf9e"/><stop offset="1" stop-color="#f26d21"/></linearGradient></defs>
+              <rect width="480" height="300" fill="url(#vg1)"/>
+              <circle cx="380" cy="70" r="60" fill="#fff" opacity=".22"/>
+              <path d="M0 230 Q120 180 240 220 T480 200 V300 H0Z" fill="#fff" opacity=".2"/>
+              <rect x="60" y="90" width="120" height="110" rx="12" fill="#fff" opacity=".26"/>
+            </svg>
+            <div class="play-mini"><i><svg viewBox="0 0 24 24" fill="#1f1a16"><path d="M8 5v14l11-7z"/></svg></i></div>
+            <span class="dur">04:12</span>
+          </div>
+          <div class="body">
+            <span class="tag">城市观察</span>
+            <h3>巷口的三分钟：一个修鞋摊的三十年</h3>
+            <div class="meta"><span>李拾光</span><span>· 2.3 万次观看</span></div>
+          </div>
+        </article>
+
+        <article class="video">
+          <div class="top">
+            <svg viewBox="0 0 480 300" preserveAspectRatio="xMidYMid slice">
+              <defs><linearGradient id="vg2" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#2c5a29"/><stop offset="1" stop-color="#9dd173"/></linearGradient></defs>
+              <rect width="480" height="300" fill="url(#vg2)"/>
+              <circle cx="120" cy="90" r="56" fill="#fff" opacity=".2"/>
+              <path d="M0 220 Q140 260 260 220 T480 240 V300 H0Z" fill="#fff" opacity=".18"/>
+              <circle cx="360" cy="190" r="40" fill="#fff" opacity=".24"/>
+            </svg>
+            <div class="play-mini"><i><svg viewBox="0 0 24 24" fill="#1f1a16"><path d="M8 5v14l11-7z"/></svg></i></div>
+            <span class="dur">06:38</span>
+          </div>
+          <div class="body">
+            <span class="tag">生活记录</span>
+            <h3>菜市场清晨六点，藏着最鲜活的城市</h3>
+            <div class="meta"><span>阿箩</span><span>· 4.1 万次观看</span></div>
+          </div>
+        </article>
+
+        <article class="video">
+          <div class="top">
+            <svg viewBox="0 0 480 300" preserveAspectRatio="xMidYMid slice">
+              <defs><linearGradient id="vg3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8e2b8"/><stop offset="1" stop-color="#e2a33c"/></linearGradient></defs>
+              <rect width="480" height="300" fill="url(#vg3)"/>
+              <rect x="70" y="60" width="130" height="180" rx="16" fill="#fff" opacity=".26"/>
+              <circle cx="340" cy="120" r="48" fill="#fff" opacity=".3"/>
+              <path d="M0 250 Q110 210 220 246 T480 224 V300 H0Z" fill="#fff" opacity=".22"/>
+            </svg>
+            <div class="play-mini"><i><svg viewBox="0 0 24 24" fill="#1f1a16"><path d="M8 5v14l11-7z"/></svg></i></div>
+            <span class="dur">09:05</span>
+          </div>
+          <div class="body">
+            <span class="tag">人物短片</span>
+            <h3>慢慢做饭的人：厨房里的一百个下午</h3>
+            <div class="meta"><span>周慢慢</span><span>· 3.6 万次观看</span></div>
+          </div>
+        </article>
+
+        <article class="video">
+          <div class="top">
+            <svg viewBox="0 0 480 300" preserveAspectRatio="xMidYMid slice">
+              <defs><linearGradient id="vg4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#cfe6f5"/><stop offset="1" stop-color="#4b90c8"/></linearGradient></defs>
+              <rect width="480" height="300" fill="url(#vg4)"/>
+              <circle cx="380" cy="80" r="44" fill="#fff" opacity=".34"/>
+              <path d="M0 190 Q120 150 240 186 T480 170 V300 H0Z" fill="#fff" opacity=".24"/>
+              <path d="M0 240 Q140 210 260 244 T480 228 V300 H0Z" fill="#fff" opacity=".16"/>
+            </svg>
+            <div class="play-mini"><i><svg viewBox="0 0 24 24" fill="#1f1a16"><path d="M8 5v14l11-7z"/></svg></i></div>
+            <span class="dur">07:22</span>
+          </div>
+          <div class="body">
+            <span class="tag">旅行手记</span>
+            <h3>沿河而上：坐慢船去一座没有名字的小镇</h3>
+            <div class="meta"><span>沈岸</span><span>· 2.8 万次观看</span></div>
+          </div>
+        </article>
+
+        <article class="video">
+          <div class="top">
+            <svg viewBox="0 0 480 300" preserveAspectRatio="xMidYMid slice">
+              <defs><linearGradient id="vg5" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9c8d8"/><stop offset="1" stop-color="#b25c85"/></linearGradient></defs>
+              <rect width="480" height="300" fill="url(#vg5)"/>
+              <circle cx="150" cy="100" r="50" fill="#fff" opacity=".26"/>
+              <rect x="300" y="70" width="100" height="150" rx="14" fill="#fff" opacity=".2"/>
+              <path d="M0 240 Q120 200 250 236 T480 218 V300 H0Z" fill="#fff" opacity=".2"/>
+            </svg>
+            <div class="play-mini"><i><svg viewBox="0 0 24 24" fill="#1f1a16"><path d="M8 5v14l11-7z"/></svg></i></div>
+            <span class="dur">05:47</span>
+          </div>
+          <div class="body">
+            <span class="tag">社区共创</span>
+            <h3>我们拍下了同一扇窗，四季的十二个早晨</h3>
+            <div class="meta"><span>第 78 拨共创组</span><span>· 5.2 万次观看</span></div>
+          </div>
+        </article>
+
+        <article class="video">
+          <div class="top">
+            <svg viewBox="0 0 480 300" preserveAspectRatio="xMidYMid slice">
+              <defs><linearGradient id="vg6" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d8d2c4"/><stop offset="1" stop-color="#7c715f"/></linearGradient></defs>
+              <rect width="480" height="300" fill="url(#vg6)"/>
+              <circle cx="360" cy="90" r="58" fill="#fff" opacity=".2"/>
+              <rect x="60" y="100" width="140" height="120" rx="12" fill="#fff" opacity=".18"/>
+              <path d="M0 250 Q120 218 240 246 T480 234 V300 H0Z" fill="#fff" opacity=".18"/>
+            </svg>
+            <div class="play-mini"><i><svg viewBox="0 0 24 24" fill="#1f1a16"><path d="M8 5v14l11-7z"/></svg></i></div>
+            <span class="dur">12:30</span>
+          </div>
+          <div class="body">
+            <span class="tag">幕后制作</span>
+            <h3>一支短片是怎样被剪出来的：幕后全记录</h3>
+            <div class="meta"><span>剪辑室日记</span><span>· 1.9 万次观看</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FEATURE ================= -->
+  <section class="feature">
+    <div class="wrap feature-grid">
+      <div>
+        <span class="eyebrow" style="color:var(--carrot-soft)">品牌故事</span>
+        <h2>从第 1 拨到第 78 拨，<br><em>我们一直在拍同一种东西</em></h2>
+        <p>78拨箩卜视频的起点，是一台旧相机和一条十五秒的街头片段。那时我们只是想知道，普通人的一天能不能被认真记录下来。答案是可以，而且值得。</p>
+        <p>如今，我们把它做成了一件持续的事：每周固定发布，每月固定放映，每年固定扶持一批新人创作者。这个名字里的「拨」，是节奏，也是约定——一拨接一拨，不停下来。</p>
+        <div class="quote">
+          「镜头不必宏大，只要对准真实的生活，它自己会说话。」
+          <cite>—— 78拨箩卜视频 内容团队</cite>
+        </div>
+      </div>
+      <div class="figures">
+        <div class="figure"><strong>1,280+</strong><span>累计原创作品</span></div>
+        <div class="figure"><strong>76万</strong><span>全平台社区观众</span></div>
+        <div class="figure"><strong>24</strong><span>城市影像站</span></div>
+        <div class="figure"><strong>210</strong><span>签约与孵化创作者</span></div>
+        <div class="figure"><strong>9年</strong><span>持续更新时长</span></div>
+        <div class="figure"><strong>48场</strong><span>年度线下放映</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CREATORS ================= -->
+  <section id="creators" class="creators">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow">创作者阵容</span>
+          <h2>镜头后面，是一群认真生活的人</h2>
+        </div>
+        <p>他们来自不同行业：有厨师、教师、程序员、退休摄影师。共同点是，都愿意花时间把一件事拍完整。</p>
+      </div>
+
+      <div class="cgrid">
+        <article class="creator">
+          <div class="avatar">
+            <svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#ffcda6"/><circle cx="50" cy="40" r="20" fill="#fff" opacity=".72"/><path d="M14 100 Q50 62 86 100Z" fill="#fff" opacity=".72"/></svg>
+          </div>
+          <h3>李拾光</h3>
+          <div class="role">城市观察 / 导演</div>
+          <p>拍街头十年，擅长在嘈杂里找到安静的三分钟。</p>
+        </article>
+        <article class="creator">
+          <div class="avatar">
+            <svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#b8dfa0"/><circle cx="50" cy="40" r="20" fill="#fff" opacity=".72"/><path d="M14 100 Q50 62 86 100Z" fill="#fff" opacity=".72"/></svg>
+          </div>
+          <h3>阿箩</h3>
+          <div class="role">生活记录 / 剪辑</div>
+          <p>菜市场常客，相信最快的节奏来自最慢的观察。</p>
+        </article>
+        <article class="creator">
+          <div class="avatar">
+            <svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#ffd9a1"/><circle cx="50" cy="40" r="20" fill="#fff" opacity=".72"/><path d="M14 100 Q50 62 86 100Z" fill="#fff" opacity=".72"/></svg>
+          </div>
+          <h3>周慢慢</h3>
+          <div class="role">美食影像 / 摄影</div>
+          <p>厨房是她的取景框，一顿饭能拍一下午。</p>
+        </article>
+        <article class="creator">
+          <div class="avatar">
+            <svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#a9cfe8"/><circle cx="50" cy="40" r="20" fill="#fff" opacity=".72"/><path d="M14 100 Q50 62 86 100Z" fill="#fff" opacity=".72"/></svg>
+          </div>
+          <h3>沈岸</h3>
+          <div class="role">旅行手记 / 摄影</div>
+          <p>偏爱慢船与支线，镜头里总有河和雾。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROCESS ================= -->
+  <section id="process">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow">合作流程</span>
+          <h2>从一条想法，到一次放映</h2>
+        </div>
+        <p>无论你是想投稿作品、参与共创，还是与品牌合作拍摄，流程都尽量透明，让每一步都看得见。</p>
+      </div>
+      <div class="steps">
+        <article class="step">
+          <h3>提交选题</h3>
+          <p>用一段话告诉我们要拍什么、为什么值得拍。选题不限地域与题材，真实、具体是最好的通行证。</p>
+        </article>
+        <article class="step">
+          <h3>共创打磨</h3>
+          <p>内容团队会与你一起梳理结构、确定拍摄清单与采访问题，必要时提供器材与场地支持。</p>
+        </article>
+        <article class="step">
+          <h3>制作发布</h3>
+          <p>成片经统一调色与声音处理后，按栏目节奏在全平台发布，并进入当月主题片单。</p>
+        </article>
+        <article class="step">
+          <h3>线下放映</h3>
+          <p>优秀作品将进入社区放映计划，在二十四座城市影像站与观众见面，创作者可到场交流。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TOPICS ================= -->
+  <section class="topics">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow">主题片单</span>
+          <h2>按你此刻的心情，选一条片子</h2>
+        </div>
+        <p>我们把作品整理成可探索的主题，方便你在茶余饭后随手挑一条，打发一段安安稳稳的时间。</p>
+      </div>
+      <div class="topic-list">
+        <a href="#videos" class="topic"><div><strong>城市漫游</strong><span>48 条作品 · 街头与建筑</span></div><span class="arw">→</span></a>
+        <a href="#videos" class="topic"><div><strong>一日三餐</strong><span>72 条作品 · 厨房与人</span></div><span class="arw">→</span></a>
+        <a href="#videos" class="topic"><div><strong>在路上</strong><span>36 条作品 · 旅行手记</span></div><span class="arw">→</span></a>
+        <a href="#videos" class="topic"><div><strong>手艺与人</strong><span>29 条作品 · 人物纪录</span></div><span class="arw">→</span></a>
+        <a href="#videos" class="topic"><div><strong>四季变化</strong><span>18 条作品 · 自然观察</span></div><span class="arw">→</span></a>
+        <a href="#videos" class="topic"><div><strong>幕后与教程</strong><span>54 条作品 · 制作笔记</span></div><span class="arw">→</span></a>
+        <a href="#videos" class="topic"><div><strong>社区共创</strong><span>24 条作品 · 多人合拍</span></div><span class="arw">→</span></a>
+        <a href="#videos" class="topic"><div><strong>新声计划</strong><span>31 条作品 · 新人首作</span></div><span class="arw">→</span></a>
+        <a href="#videos" class="topic"><div><strong>深夜放映室</strong><span>22 条作品 · 长片与对谈</span></div><span class="arw">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SUBSCRIBE ================= -->
+  <section id="subscribe" style="padding-top:0">
+    <div class="wrap">
+      <div class="subscribe">
+        <div>
+          <h2>加入 78拨箩卜视频社区</h2>
+          <p>订阅每月影像简报，第一时间收到新片上线、放映活动与创作者招募信息。我们只发送与影像有关的内容，不打扰你的日常。</p>
+        </div>
+        <div>
+          <form class="sub-form" onsubmit="event.preventDefault();this.querySelector('button').textContent='已订阅 ✓';this.querySelector('input').value='';">
+            <input type="email" placeholder="输入你的邮箱地址" aria-label="邮箱地址" required>
+            <button type="submit">订阅简报</button>
+          </form>
+          <p class="sub-note">已有 12,400+ 位朋友订阅 · 每月一封，随时退订</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section id="faq" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head" style="justify-content:center;text-align:center">
+        <div>
+          <span class="eyebrow" style="justify-content:center">常见问题</span>
+          <h2>你可能想知道的几件事</h2>
+        </div>
+      </div>
+      <div class="faq-list">
+        <details open>
+          <summary>我没有专业设备，可以投稿吗？</summary>
+          <div class="ans">当然可以。78拨箩卜视频更看重内容本身，许多入选作品都来自手机拍摄。我们会提供基础的声音与调色建议，帮助作品达到发布标准。</div>
+        </details>
+        <details>
+          <summary>投稿之后多久会收到回复？</summary>
+          <div class="ans">一般在七个工作日内给出初步意见。如果选题进入制作阶段，内容团队会与你单独沟通时间与分工。</div>
+        </details>
+        <details>
+          <summary>作品版权归谁所有？</summary>
+          <div class="ans">创作者保留作品署名权与原始著作权，平台获得在自有渠道进行展示与传播的授权，具体条款会在合作确认时明确说明。</div>
+        </details>
+        <details>
+          <summary>线下放映在哪里举办？</summary>
+          <div class="ans">目前在北京、上海、成都、广州、杭州等二十四座城市设有影像站，活动信息会通过影像简报和社区公告提前发布。</div>
+        </details>
+        <details>
+          <summary>品牌可以合作拍摄吗？</summary>
+          <div class="ans">可以。我们接受品牌内容共创，但坚持真实叙事优先，不会为了商业信息牺牲作品的完整度。合作需求可通过页脚邮箱联系。</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="f-top">
+      <div>
+        <div class="f-brand">
+          <span class="mark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2.5" y="5" width="14" height="14" rx="3"/>
+              <path d="M16.5 10.5 21.5 7.5v9l-5-3z" fill="#fff" stroke="none"/>
+            </svg>
+          </span>
+          78拨箩卜视频
+        </div>
+        <p class="f-desc">聚焦生活影像与原创短片的视频品牌。我们记录真实、分享日常，也帮助更多创作者把故事拍完整。</p>
+      </div>
+      <div class="f-col">
+        <h4>内容</h4>
+        <a href="#videos">精选视频</a>
+        <a href="#videos">主题片单</a>
+        <a href="#creators">创作者</a>
+        <a href="#process">幕后制作</a>
+      </div>
+      <div class="f-col">
+        <h4>社区</h4>
+        <a href="#subscribe">订阅简报</a>
+        <a href="#process">投稿指南</a>
+        <a href="#faq">常见问题</a>
+        <a href="#subscribe">放映活动</a>
+      </div>
+      <div class="f-col">
+        <h4>联系</h4>
+        <a href="mailto:hello@luobo-video.example">hello@luobo-video.example</a>
+        <a href="#top">合作洽谈</a>
+        <a href="#top">媒体资源</a>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2024 78拨箩卜视频 · 保留所有权利</span>
+      <div class="f-social">
+        <a href="#top" aria-label="视频平台">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm6.5 4.2v7.6l6.3-3.8z"/></svg>
+        </a>
+        <a href="#top" aria-label="社区">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.9 6.1-1.6 7.6c-.1.5-.4.6-.8.4l-2.3-1.7-1.1 1.1c-.1.1-.2.2-.4.2l.2-2.4 4.4-4c.2-.2 0-.3-.3-.1l-5.4 3.4-2.3-.7c-.5-.2-.5-.5.1-.7l9-3.5c.4-.1.8.1.5 1.4z"/></svg>
+        </a>
+        <a href="#top" aria-label="邮件">
+          <svg viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 8.2L4.5 7.4v10.1h15V7.4L12 13.2zM4.7 7h14.6L12 11.6 4.7 7z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // 平滑滚动（含吸顶导航偏移）
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('href');
+      if(id.length < 2) return;
+      var target = document.querySelector(id);
+      if(!target) return;
+      e.preventDefault();
+      var top = target.getBoundingClientRect().top + window.pageYOffset - 78;
+      window.scrollTo({top: top, behavior:'smooth'});
+      document.getElementById('mmenu').classList.remove('open');
+    });
+  });
+
+  // 滚动时导航栏微交互
+  var header = document.querySelector('header.site');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 10){
+      header.style.boxShadow = '0 10px 30px -24px rgba(94,55,18,.6)';
+    } else {
+      header.style.boxShadow = 'none';
+    }
+  });
+
+  // 视频卡片入场渐显
+  var items = document.querySelectorAll('.video, .pillar, .creator, .step, .topic');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          en.target.style.opacity = '1';
+          en.target.style.transform = 'translateY(0)';
+          io.unobserve(en.target);
+        }
+      });
+    }, {threshold: 0.12});
+    items.forEach(function(el, i){
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(22px)';
+      el.style.transition = 'opacity .6s ease ' + (i % 6 * 0.05) + 's, transform .6s ease ' + (i % 6 * 0.05) + 's, box-shadow .35s, border-color .35s';
+      io.observe(el);
+    });
+  }
+</script>
+</body>
+              </html>
